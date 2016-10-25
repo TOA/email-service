@@ -8,7 +8,7 @@ use Slim\Http\Response;
  * Index for Email Service
  */
 $app->get('/', function (Request $request, Response $response) {
-    $response->getBody()->write('Email Service. Routes are in progress.');
+    $response->getBody()->write('Available routes: /send');
 
     return $response;
 })->setName("email-index");
