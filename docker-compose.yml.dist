@@ -1,0 +1,17 @@
+email:
+  build: .
+  volumes:
+    - .:/var/www/html:rw
+  ports:
+    - "80:80"
+  links:
+    - email_mysql:mysql
+
+email_mysql:
+  image: tutum/mysql
+  ports:
+    - "3306:3306"
+  environment:
+    - MYSQL_USER=changeMe
+    - MYSQL_PASS=changeMe
+    - ON_CREATE_DB=changeMe

@@ -1,0 +1,14 @@
+{
+  "autoload": {
+    "psr-4": {
+      "": "app/",
+      "App\\": "app/"
+    }
+  },
+
+  "require": {
+    "slim/slim": "^3.0",
+    "swiftmailer/swiftmailer": "^5.4",
+    "monolog/monolog": "^1.21"
+  }
+}
