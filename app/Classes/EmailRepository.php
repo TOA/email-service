@@ -63,7 +63,7 @@ class EmailRepository
      * @param string $status
      * @return int
      */
-    public function store(Swift_Message $email, $status = EmailHelper::STATUS_PENDING)
+    public function store(Swift_Message $email, $status = EmailRepository::STATUS_PENDING)
     {
         $message = $email->toString();
 
