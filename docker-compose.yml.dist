@@ -6,6 +6,18 @@ email:
     - "80:80"
   links:
     - email_mysql:mysql
+  environment:
+    - MAIL_DRIVER=smtp
+    - MAIL_HOST=changeMe
+    - MAIL_PORT=25
+    - MAIL_USERNAME=changeMe
+    - MAIL_PASSWORD=changeMe
+    - MAIL_ENCRYPTION=tls
+    - MAIL_PRETEND=false
+    - DB_HOST=changeMe
+    - DB_USERNAME=changeMe
+    - DB_PASSWORD=changeMe
+    - DB_DATABASE=changeMe
 
 email_mysql:
   image: tutum/mysql

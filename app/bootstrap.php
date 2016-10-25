@@ -6,10 +6,10 @@ $app = new \Slim\App([
     'settings' => [
         'displayErrorDetails' => true,
         'db' => [
-            'host'      => "mysql",
-            'user'      => "email_mysql",
-            'pass'      => "mysql4Email",
-            'dbname'    => "email_service",
+            'host'      => getenv('DB_HOST'),
+            'user'      => getenv('DB_USERNAME'),
+            'pass'      => getenv('DB_PASSWORD'),
+            'dbname'    => getenv('DB_DATABASE'),
         ]
     ]
 ]);
