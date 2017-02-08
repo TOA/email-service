@@ -1,29 +1,33 @@
-email:
-  build: .
-  volumes:
-    - .:/var/www/html:rw
-  ports:
-    - "80:80"
-  links:
-    - email_mysql:mysql
-  environment:
-    - MAIL_DRIVER=smtp
-    - MAIL_HOST=changeMe
-    - MAIL_PORT=25
-    - MAIL_USERNAME=changeMe
-    - MAIL_PASSWORD=changeMe
-    - MAIL_ENCRYPTION=tls
-    - MAIL_PRETEND=false
-    - DB_HOST=changeMe
-    - DB_USERNAME=changeMe
-    - DB_PASSWORD=changeMe
-    - DB_DATABASE=changeMe
+version: '2'
 
-email_mysql:
-  image: tutum/mysql
-  ports:
-    - "3306:3306"
-  environment:
-    - MYSQL_USER=changeMe
-    - MYSQL_PASS=changeMe
-    - ON_CREATE_DB=changeMe
+services:
+    email:
+      build: .
+      ports:
+        - "8080:80"
+      volumes:
+        - .:/var/www/html
+      environment:
+        - MAIL_DRIVER=smtp
+        - MAIL_HOST=smtp.gmail.com
+        - MAIL_PORT=465
+        - MAIL_USERNAME=changeMe
+        - MAIL_PASSWORD=changeMe
+        - MAIL_ENCRYPTION=tls
+        - MAIL_PRETEND=false
+        - DB_HOST=db
+        - DB_USERNAME=changeMe
+        - DB_PASSWORD=changeMe
+        - DB_DATABASE=email
+
+    db:
+      image: mysql/mysql-server
+      ports:
+        - "3306:3306"
+      volumes:
+        - /var/lib/mysql
+      environment:
+        MYSQL_ROOT_PASSWORD: changeMe
+        MYSQL_USER: changeMe
+        MYSQL_PASSWORD: changeMe
+        MYSQL_DATABASE: email
